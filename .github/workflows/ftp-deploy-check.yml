@@ -1,0 +1,38 @@
+name: Partner FTP deploy check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ftp-dry-run:
+    name: Verify FTP deployment safely
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Preview FTP changes
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ftp
+          local-dir: ./
+          server-dir: ./
+          dangerous-clean-slate: false
+          dry-run: true
+          exclude: |
+            **/.git*
+            **/.DS_Store
+            **/Thumbs.db
+            **/node_modules/**
+            **/vendor/**
+            bootstrap/cache/**
+            storage/**
+            *.log
+            .env
+            .env.*
+            public/storage/**
