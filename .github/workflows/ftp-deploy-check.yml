@@ -1,6 +1,9 @@
 name: Deploy Partner portal
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
