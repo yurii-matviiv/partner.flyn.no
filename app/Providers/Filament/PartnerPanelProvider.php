@@ -6,12 +6,19 @@ use App\Http\Middleware\SetPartnerLocale;
 use App\Http\Middleware\EnsurePartnerProfileComplete;
 use App\Filament\Pages\PartnerProfilePage;
 use App\Filament\Pages\PricesAndServicesPage;
+use App\Filament\Pages\ActiveServicesPage;
+use App\Filament\Pages\UpcomingVisitsPage;
+use App\Filament\Pages\UnpaidInvoicesPage;
+use App\Filament\Pages\PaidInvoicesPage;
+use App\Filament\Pages\PartnerDashboard;
+use App\Filament\Pages\PartnerNotificationsPage;
+use App\Filament\Widgets\PartnerOverview;
+use App\Filament\Widgets\PartnerLatestNotification;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Actions\Action as FilamentAction;
-use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -44,9 +51,18 @@ class PartnerPanelProvider extends PanelProvider
             ->databaseNotifications()
             ->databaseNotificationsPolling(null)
             ->pages([
-                Dashboard::class,
+                PartnerDashboard::class,
                 PartnerProfilePage::class,
                 PricesAndServicesPage::class,
+                ActiveServicesPage::class,
+                UpcomingVisitsPage::class,
+                UnpaidInvoicesPage::class,
+                PaidInvoicesPage::class,
+                PartnerNotificationsPage::class,
+            ])
+            ->widgets([
+                PartnerOverview::class,
+                PartnerLatestNotification::class,
             ])
             // Follow the ERM user-menu structure: the authenticated person's
             // name is the menu header and the first action opens their profile.

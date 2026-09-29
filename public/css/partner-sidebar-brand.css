@@ -9,6 +9,19 @@
 .flyn-sidebar-brand { display: none; }
 
 @media (min-width: 1024px) {
+    /* The navigation is a permanent application frame. Give it a quiet
+       surface of its own so the white area on the right reads as the active
+       workspace, rather than one continuous empty canvas. */
+    html:not(.dark) .fi-body,
+    html:not(.dark) .fi-main-ctn {
+        background-color: #fff;
+    }
+
+    html:not(.dark) .fi-sidebar {
+        background-color: #f6f8fa !important;
+        border-inline-end: 1px solid #e3e9ed;
+    }
+
     .flyn-sidebar-brand { display: flex; align-items: center; width: 100%; height: 4rem; flex: none; overflow: hidden; }
     .flyn-sidebar-logo-button { display: flex; align-items: center; justify-content: center; width: var(--collapsed-sidebar-width); height: 4rem; flex: none; padding: 0; border: 0; border-radius: .5rem; background: transparent; cursor: pointer; }
     .flyn-sidebar-logo-button:hover, .flyn-sidebar-logo-button:focus-visible { background-color: color-mix(in srgb, var(--gray-500) 10%, transparent); }
@@ -61,7 +74,7 @@
         width: var(--collapsed-sidebar-width);
         padding: .75rem;
         border-top: 1px solid color-mix(in srgb, var(--gray-500) 20%, transparent);
-        background-color: var(--color-white);
+        background-color: #f6f8fa;
     }
 
     .dark .fi-topbar-end {

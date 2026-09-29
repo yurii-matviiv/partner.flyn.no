@@ -21,6 +21,7 @@ This is the short, mandatory entry point for the project. It is deliberately not
 | --- | --- |
 | The page **Priser og tjenester**, its estimate, package wording or included services | [Prices and services overview](prices-and-services/README.md) |
 | A price rule, estimate threshold or the source calculator’s assumptions | [Calculator rules](prices-and-services/calculator-rules.md) |
+| Partner dashboard cards, empty states, services, visits or invoice presentation | [Dashboard overview](dashboard/README.md) |
 | Login, email-code access, Partner users, sessions or profile onboarding | Create/read the dedicated authentication document when that module is next changed; do not infer it from the price-page documentation. |
 | Hosting, GitHub Actions or FTP | Use the existing deployment workflow documentation and verify against current hosting configuration before any deploy. |
 
