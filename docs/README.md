@@ -13,6 +13,7 @@ This is the short, mandatory entry point for the project. It is deliberately not
 - Database changes are prepared as copy-ready SQL and executed by the owner; do not create Laravel migrations for hosting changes.
 - Customer-facing content is Norwegian and English only. The current locale must be respected in a page’s text and controls.
 - The signed-in panel uses Filament’s sidebar, notification bell and avatar menu. Public/access pages may use their own visible language control; the authenticated panel keeps language choice inside the avatar menu.
+- A Partner profile is **optional**. A verified email grants access to the panel; missing company/contact data creates a persistent notification with a link to the profile page, not a redirect or access block.
 
 ## Choose the relevant document
 

@@ -134,7 +134,10 @@ class PartnerAccessController
         $request->session()->regenerate();
         $request->session()->put('partner_locale', $user->locale);
 
-        return redirect()->route('partner.onboarding');
+        // An authenticated email is sufficient to enter the Partner panel.
+        // Profile details are voluntary and are requested through the
+        // notification bell and avatar menu when the user is ready.
+        return redirect('/partner-panel');
     }
 
     private function locale(Request $request, ?string $email = null): string

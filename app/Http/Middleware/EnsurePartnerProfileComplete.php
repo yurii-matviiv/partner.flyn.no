@@ -28,16 +28,10 @@ class EnsurePartnerProfileComplete
             app(PartnerProfileReminderService::class)->ensure($user);
         }
 
-        // Dashboard and the profile page are always available. Otherwise an
-        // incomplete profile would redirect from /profile back to itself.
-        if (in_array($request->path(), ['partner-panel', 'partner-panel/profile'], true)) {
-            return $next($request);
-        }
-
-        if ($user && ! $isComplete) {
-            return redirect(\App\Filament\Pages\PartnerProfilePage::getUrl());
-        }
-
+        // A profile is optional. Its missing data produces one persistent
+        // notification, but it must never block access to panel pages.
+        // Access control for future sensitive areas belongs to their own
+        // policies, not to this reminder middleware.
         return $next($request);
     }
 }
