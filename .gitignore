@@ -4,6 +4,7 @@
 !/.env.example
 
 /vendor/
+/vendor.zip
 /node_modules/
 
 /bootstrap/cache/*.php

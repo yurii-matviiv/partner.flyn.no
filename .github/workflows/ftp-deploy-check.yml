@@ -1,18 +1,18 @@
-name: Partner FTP deploy check
+name: Deploy Partner portal
 
 on:
   workflow_dispatch:
 
 jobs:
-  ftp-dry-run:
-    name: Verify FTP deployment safely
+  deploy:
+    name: Deploy code to Partner hosting
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Preview FTP changes
+      - name: Upload application code
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -23,7 +23,7 @@ jobs:
           local-dir: ./
           server-dir: ./
           dangerous-clean-slate: false
-          dry-run: true
+          dry-run: false
           exclude: |
             **/.git*
             **/.DS_Store
