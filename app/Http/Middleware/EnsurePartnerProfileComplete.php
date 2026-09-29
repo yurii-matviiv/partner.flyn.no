@@ -28,12 +28,14 @@ class EnsurePartnerProfileComplete
             app(PartnerProfileReminderService::class)->ensure($user);
         }
 
-        if ($request->path() === 'partner-panel') {
+        // Dashboard and the profile page are always available. Otherwise an
+        // incomplete profile would redirect from /profile back to itself.
+        if (in_array($request->path(), ['partner-panel', 'partner-panel/profile'], true)) {
             return $next($request);
         }
 
         if ($user && ! $isComplete) {
-            return redirect()->route('partner.profile.edit');
+            return redirect(\App\Filament\Pages\PartnerProfilePage::getUrl());
         }
 
         return $next($request);

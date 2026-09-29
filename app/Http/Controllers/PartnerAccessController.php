@@ -134,7 +134,7 @@ class PartnerAccessController
         $request->session()->regenerate();
         $request->session()->put('partner_locale', $user->locale);
 
-        return redirect()->route('partner.profile.edit');
+        return redirect()->route('partner.onboarding');
     }
 
     private function locale(Request $request, ?string $email = null): string

@@ -33,7 +33,7 @@ class PartnerProfileIncompleteNotification extends Notification
                 ->actions([
                     Action::make('complete_partner_profile')
                         ->label($isEnglish ? 'Complete profile' : 'Fullfør profil')
-                        ->url(route('partner.profile.edit')),
+                        ->url(\App\Filament\Pages\PartnerProfilePage::getUrl()),
                 ])
                 ->getDatabaseMessage(),
             'partner_key' => self::KEY,

@@ -64,4 +64,9 @@
 .partner-profile-submit { width: 100%; border: 0; border-radius: .65rem; background: #0a9ed5; color: #fff; cursor: pointer; font-size: .98rem; font-weight: 800; padding: .85rem 1rem; }
 .partner-profile-actions { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .75rem; padding: 0 2rem 2rem; }
 .partner-profile-skip { border: 1px solid #9db1bf; border-radius: .65rem; background: #fff; color: #284b62; cursor: pointer; font: inherit; font-size: .92rem; font-weight: 750; padding: .85rem 1rem; }
+.partner-profile-actions--single { display: block; }
+.partner-profile-panel { display: flex; justify-content: center; padding: .5rem 0 2rem; }
+.partner-profile-card--panel { width: min(100%, 52rem); }
+.partner-profile-panel__intro { padding: 1.35rem 2rem 0; }
+.partner-profile-panel__intro p { margin: 0; color: #536779; font-size: .92rem; line-height: 1.55; }
 @media (max-width: 34rem) { .partner-profile-page { padding: 0; } .partner-profile-card { border: 0; border-radius: 0; box-shadow: none; min-height: 100vh; } .partner-profile-header, .partner-profile-tabs, .partner-profile-actions { padding-left: 1.25rem; padding-right: 1.25rem; } .partner-profile-grid { grid-template-columns: 1fr; } .partner-profile-field--wide { grid-column: auto; } .partner-profile-tabs__label { font-size: .78rem; padding-left: .45rem; padding-right: .45rem; } .partner-profile-actions { grid-template-columns: 1fr; padding-bottom: 1.5rem; } }
