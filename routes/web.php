@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PartnerAccessController;
+use App\Http\Controllers\PartnerPricingController;
 use App\Http\Controllers\PartnerProfileController;
 use App\Http\Middleware\SetPartnerLocale;
 use App\Filament\Pages\PartnerProfilePage;
@@ -33,5 +34,8 @@ Route::middleware(SetPartnerLocale::class)->group(function (): void {
         ->name('partner.profile.store');
     Route::post('/partner-panel/onboarding/skip', [PartnerProfileController::class, 'skip'])
         ->name('partner.profile.skip');
+    Route::post('/partner-panel/pricing/calculate', [PartnerPricingController::class, 'calculateB2bRegularCleaning'])
+        ->middleware('throttle:60,1')
+        ->name('partner.pricing.b2b-regular-cleaning');
     });
 });

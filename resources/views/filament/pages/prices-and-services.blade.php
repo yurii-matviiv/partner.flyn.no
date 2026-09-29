@@ -54,6 +54,7 @@
                             <div data-result-weekend-row hidden><dt>{{ $isEnglish ? 'Weekend supplement' : 'Helgetillegg' }}</dt><dd data-result-weekend></dd></div>
                         </dl>
                         <p class="partner-calculator-estimate__disclaimer">{{ $isEnglish ? 'The estimate is non-binding. The scope and final price are confirmed in the offer after an on-site assessment.' : 'Estimatet er uforpliktende. Omfang og endelig pris bekreftes i tilbudet etter befaring.' }}</p>
+                        <p class="partner-calculator-estimate__error" data-calculator-error role="alert" hidden></p>
                     </section>
 
                     <div class="partner-calculator-card__about" data-plan-summary aria-live="polite"></div>

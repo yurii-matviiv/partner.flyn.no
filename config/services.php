@@ -108,6 +108,12 @@ return [
 
     'deploy_cache_token' => env('DEPLOY_CACHE_TOKEN'),
 
+    // Browser requests stay same-origin; this app proxies them to the only
+    // canonical pricing engine in CRM.
+    'crm_pricing' => [
+        'url' => env('CRM_PRICING_URL', 'https://erm.flyn.no/api/website/pricing/calculate'),
+    ],
+
     // Shared secret for the flyn.no backend to create a public offer for its own lead.
     'website_offer' => [
         'token' => env('WEBSITE_OFFER_API_TOKEN'),
