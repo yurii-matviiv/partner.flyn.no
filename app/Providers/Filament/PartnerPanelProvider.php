@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use App\Http\Middleware\SetPartnerLocale;
 use App\Http\Middleware\EnsurePartnerProfileComplete;
 use App\Filament\Pages\PartnerProfilePage;
+use App\Filament\Pages\PricesAndServicesPage;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -45,6 +46,7 @@ class PartnerPanelProvider extends PanelProvider
             ->pages([
                 Dashboard::class,
                 PartnerProfilePage::class,
+                PricesAndServicesPage::class,
             ])
             // Follow the ERM user-menu structure: the authenticated person's
             // name is the menu header and the first action opens their profile.
@@ -62,7 +64,7 @@ class PartnerPanelProvider extends PanelProvider
             )
             ->renderHook(
                 PanelsRenderHook::HEAD_END,
-                fn (): string => '<link rel="stylesheet" href="' . asset('css/partner-sidebar-brand.css') . '"><link rel="stylesheet" href="' . asset('css/partner-auth.css') . '">',
+                fn (): string => '<link rel="stylesheet" href="' . asset('css/partner-sidebar-brand.css') . '"><link rel="stylesheet" href="' . asset('css/partner-auth.css') . '"><link rel="stylesheet" href="' . asset('css/partner-prices.css') . '">',
             )
             ->renderHook(
                 PanelsRenderHook::AUTH_LOGIN_FORM_BEFORE,
