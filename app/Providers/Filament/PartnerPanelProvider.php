@@ -27,9 +27,10 @@ class PartnerPanelProvider extends PanelProvider
             ->id('partner-panel')
             ->path('partner-panel')
             ->login()
-            ->brandLogo(asset('storage/images/flyn-service.svg'))
+            ->brandLogo(asset('images/branding/flyn-service.svg'))
             ->brandLogoHeight('2rem')
             ->brandName('FLYN Partner')
+            ->favicon(asset('favicon.ico'))
             ->colors(['primary' => Color::Sky])
             ->pages([Dashboard::class])
             ->renderHook(
