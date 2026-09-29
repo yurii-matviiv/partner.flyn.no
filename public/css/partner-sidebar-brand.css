@@ -1,4 +1,13 @@
+/*
+ * Desktop application shell — перенесено з flyn-erm
+ * (resources/css/filament/admin/theme.css, секція "Desktop application shell").
+ *
+ * Мобільний topbar (< 1024px) лишається штатним. На десктопі topbar прибирається:
+ * логотип у sidebar — єдина кнопка toggle меню, а єдиний DOM-екземпляр
+ * .fi-topbar-end (аватар / меню користувача) переноситься вниз sidebar.
+ */
 .flyn-sidebar-brand { display: none; }
+
 @media (min-width: 1024px) {
     .flyn-sidebar-brand { display: flex; align-items: center; width: 100%; height: 4rem; flex: none; overflow: hidden; }
     .flyn-sidebar-logo-button { display: flex; align-items: center; justify-content: center; width: var(--collapsed-sidebar-width); height: 4rem; flex: none; padding: 0; border: 0; border-radius: .5rem; background: transparent; cursor: pointer; }
@@ -7,4 +16,79 @@
     .flyn-sidebar-logo-button .fi-logo { margin: 0; flex: none; }
     .flyn-sidebar-company-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-inline-end: 1rem; color: var(--gray-950); font-size: .875rem; font-weight: 600; }
     .dark .flyn-sidebar-company-name { color: var(--color-white); }
+
+    /* Прибираємо коробку topbar, зберігаючи її єдине функціональне DOM-дерево. */
+    .fi-topbar-ctn,
+    .fi-topbar {
+        display: contents !important;
+    }
+
+    /* Другий логотип і штатні кнопки відкрити/закрити меню. */
+    .fi-topbar-open-sidebar-btn,
+    .fi-topbar-close-sidebar-btn,
+    .fi-topbar-start,
+    .fi-topbar-nav-groups {
+        display: none !important;
+    }
+
+    .fi-body-has-topbar .fi-sidebar {
+        top: 0 !important;
+        height: 100dvh !important;
+    }
+
+    .fi-body-has-topbar .fi-main-ctn {
+        min-height: 100dvh !important;
+    }
+
+    .fi-page-header-main-ctn {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    /* Колишній topbar-end стає футером sidebar (аватар, вихід). */
+    .fi-topbar-end {
+        position: fixed;
+        inset-inline-start: 0;
+        bottom: 0;
+        z-index: 40;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "notifications"
+            "profile";
+        justify-items: center;
+        gap: .5rem;
+        width: var(--collapsed-sidebar-width);
+        padding: .75rem;
+        border-top: 1px solid color-mix(in srgb, var(--gray-500) 20%, transparent);
+        background-color: var(--color-white);
+    }
+
+    .dark .fi-topbar-end {
+        background-color: var(--gray-900);
+    }
+
+    /* При розгорнутому меню: аватар + ім'я користувача в один рядок. */
+    .fi-body:has(.fi-sidebar.fi-sidebar-open) .fi-topbar-end {
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas: "profile notifications";
+        justify-items: stretch;
+        align-items: center;
+        width: var(--sidebar-width);
+        padding-inline: 1.25rem;
+    }
+
+    .fi-topbar-end > .fi-user-menu {
+        grid-area: profile;
+    }
+
+    .fi-topbar-end > .fi-no-database {
+        grid-area: notifications;
+        justify-self: end;
+    }
+
+    /* Останній пункт меню не ховається під футером з аватаром. */
+    .fi-sidebar-nav {
+        padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+    }
 }

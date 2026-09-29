@@ -1,3 +1,4 @@
+{{-- Desktop only: логотип стоїть на осі іконок навігації і відкриває/закриває sidebar (як у flyn-erm). --}}
 <div class="flyn-sidebar-brand">
     <button
         type="button"
@@ -11,7 +12,12 @@
         <x-filament-panels::logo />
     </button>
 
-    <span class="flyn-sidebar-company-name">
-        FLYN Partner
+    {{-- Назва видима лише при розгорнутому меню, щоб не вилазити за згорнутий sidebar. --}}
+    <span
+        class="flyn-sidebar-company-name"
+        x-show="$store.sidebar.isOpen"
+        x-cloak
+    >
+        {{ filament()->getBrandName() }}
     </span>
 </div>
