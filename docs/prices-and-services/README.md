@@ -20,7 +20,9 @@ The page gives existing Partner users a clear overview of regular cleaning servi
 ## Customer-facing rules
 
 - Three plans: **Vedlikehold / Maintenance**, **Standard**, **Utvidet / Extended**.
-- Input: total area from 50 to 3,000 m² and one to five cleanings per week.
+- The three plans are selected through tabs. Only the selected plan’s single summary card is shown; do not reintroduce three competing package cards in the Partner panel.
+- Input: total area from 50 to 3,000 m² and one to seven selected cleaning days per week.
+- Customers choose the actual days of the week instead of a separate frequency. A selected Saturday applies a 25% supplement to that visit; a selected Sunday applies a 50% supplement. The visible price summary must show the relevant weekend supplement.
 - Up to 1,000 m²: show one guide price per month, excluding VAT.
 - 1,001–1,500 m²: show a ±15% guide range.
 - Above 1,500 m²: show **Pris etter befaring / Price after on-site assessment**.

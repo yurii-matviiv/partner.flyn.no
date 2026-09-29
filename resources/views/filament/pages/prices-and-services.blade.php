@@ -11,18 +11,18 @@
 
         <section class="partner-price-calculator" aria-labelledby="partner-calculator-title">
             <div class="partner-price-calculator__controls">
-                <div>
-                    <h2 id="partner-calculator-title">{{ $isEnglish ? 'Estimate your monthly price' : 'Beregn en veiledende månedspris' }}</h2>
-                    <p>{{ $isEnglish ? 'The final agreement is always tailored after an on-site assessment.' : 'Den endelige avtalen tilpasses alltid etter befaring.' }}</p>
-                </div>
+                <div class="partner-plan-tabs" data-plan-options role="tablist" aria-label="{{ $isEnglish ? 'Cleaning plans' : 'Renholdsplaner' }}"></div>
 
-                <fieldset class="partner-price-fieldset">
-                    <legend>{{ $isEnglish ? '1. Choose a cleaning plan' : '1. Velg renholdsplan' }}</legend>
-                    <div class="partner-plan-grid" data-plan-options></div>
-                </fieldset>
+                <section class="partner-calculator-card" aria-labelledby="partner-calculator-title">
+                    <div class="partner-calculator-card__header">
+                        <div>
+                            <h2 id="partner-calculator-title" data-calculator-title></h2>
+                            <p>{{ $isEnglish ? 'Adjust the area and select the weekdays that suit you to see an indicative monthly price.' : 'Juster arealet og velg ukedagene som passer for å se en veiledende månedspris.' }}</p>
+                        </div>
+                        <span class="partner-calculator-card__badge" data-calculator-badge hidden></span>
+                    </div>
 
-                <fieldset class="partner-price-fieldset">
-                    <legend>{{ $isEnglish ? '2. Your premises' : '2. Lokalet deres' }}</legend>
+                    <fieldset class="partner-price-fieldset">
                     <label class="partner-price-label" for="partner-area">{{ $isEnglish ? 'Total area' : 'Totalt areal' }}</label>
                     <div class="partner-area-input">
                         <input id="partner-area-range" type="range" min="50" max="3000" step="10" value="150">
@@ -31,26 +31,34 @@
                     </div>
                     <p class="partner-price-hint">{{ $isEnglish ? 'For ordinary office premises. Larger or more specialised premises are assessed individually.' : 'Gjelder ordinære kontorlokaler. Større eller mer spesialiserte lokaler vurderes individuelt.' }}</p>
 
-                    <span class="partner-price-label">{{ $isEnglish ? 'How often?' : 'Hvor ofte?' }}</span>
-                    <div class="partner-frequency-options" data-frequency-options></div>
-                </fieldset>
-            </div>
+                    <span class="partner-price-label partner-price-label--days">{{ $isEnglish ? 'Preferred weekdays for cleaning' : 'Ønskede ukedager for renhold' }}</span>
+                    <div class="partner-weekday-options" data-weekday-options role="group" aria-label="{{ $isEnglish ? 'Preferred weekdays' : 'Ønskede ukedager' }}"></div>
+                    <p class="partner-price-day-hint" data-weekday-hint></p>
 
-            <aside class="partner-price-result" aria-live="polite">
-                <p class="partner-prices__eyebrow" data-result-label></p>
-                <p class="partner-price-result__plan" data-result-plan></p>
-                <p class="partner-price-result__amount" data-result-monthly></p>
-                <p class="partner-price-result__note" data-result-note></p>
-                <dl class="partner-price-result__details">
-                    <div><dt>{{ $isEnglish ? 'Cleaning frequency' : 'Renholdsfrekvens' }}</dt><dd data-result-frequency></dd></div>
-                    <div><dt>{{ $isEnglish ? 'Guide price per visit' : 'Veiledende pris per rengjøring' }}</dt><dd data-result-visit></dd></div>
-                </dl>
-                <div class="partner-price-result__includes">
-                    <h3>{{ $isEnglish ? 'Included as a starting point' : 'Inkludert som utgangspunkt' }}</h3>
-                    <ul data-result-includes></ul>
-                </div>
-                <p class="partner-price-result__disclaimer">{{ $isEnglish ? 'The estimate is non-binding. The scope, start-up cleaning and final price are confirmed in the offer after an on-site assessment.' : 'Estimatet er uforpliktende. Omfang, oppstartsrengjøring og endelig pris bekreftes i tilbudet etter befaring.' }}</p>
-            </aside>
+                    </fieldset>
+
+                    <section class="partner-calculator-estimate" aria-live="polite">
+                        <div class="partner-calculator-estimate__heading">
+                            <div>
+                                <p class="partner-prices__eyebrow" data-result-label></p>
+                                <p class="partner-calculator-estimate__plan" data-result-plan></p>
+                            </div>
+                            <div class="partner-calculator-estimate__price">
+                                <p class="partner-calculator-estimate__amount" data-result-monthly></p>
+                                <p class="partner-calculator-estimate__note" data-result-note></p>
+                            </div>
+                        </div>
+                        <dl class="partner-calculator-estimate__details">
+                            <div><dt>{{ $isEnglish ? 'Cleaning days' : 'Renholdsdager' }}</dt><dd data-result-frequency></dd></div>
+                            <div><dt>{{ $isEnglish ? 'Guide price per visit' : 'Veiledende pris per rengjøring' }}</dt><dd data-result-visit></dd></div>
+                            <div data-result-weekend-row hidden><dt>{{ $isEnglish ? 'Weekend supplement' : 'Helgetillegg' }}</dt><dd data-result-weekend></dd></div>
+                        </dl>
+                        <p class="partner-calculator-estimate__disclaimer">{{ $isEnglish ? 'The estimate is non-binding. The scope and final price are confirmed in the offer after an on-site assessment.' : 'Estimatet er uforpliktende. Omfang og endelig pris bekreftes i tilbudet etter befaring.' }}</p>
+                    </section>
+
+                    <div class="partner-calculator-card__about" data-plan-summary aria-live="polite"></div>
+                </section>
+            </div>
         </section>
 
         <section class="partner-services" aria-labelledby="partner-services-title">
