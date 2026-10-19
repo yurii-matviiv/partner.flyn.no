@@ -11,6 +11,12 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class PartnerOverview extends StatsOverviewWidget
 {
+    /**
+     * The dashboard currently shows static summary values, so polling would
+     * only create a Livewire request every five seconds for each open tab.
+     */
+    protected ?string $pollingInterval = null;
+
     protected function getHeading(): ?string
     {
         return app()->getLocale() === 'en' ? 'Overview' : 'Oversikt';
